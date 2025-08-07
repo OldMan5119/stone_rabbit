@@ -5,7 +5,7 @@
     <div class="main-container">
       <div class="fixed-header">
         <navbar/>
-        <tags-view/>
+        <tags-view class="tags-view"/>
       </div>
       <app-main class="app-main"/>
     </div>
@@ -37,13 +37,13 @@ export default {
   display: flex;
   height: 100%;
   width: 100%;
-  background: #C03639;
+  //background: #C03639;
 }
 
 .sidebar-container {
   width: #{$sideBarWidth};
   height: 100%;
-  background: #13ce66;
+  //background: #13ce66;
 }
 
 .main-container {
@@ -53,18 +53,19 @@ export default {
   min-height: 100%;
   transition: margin-left .28s;
   position: relative;
-  background: #FEC171;
+  //background: #FEC171;
 }
 
 .fixed-header {
-  height: 45px;
+  height: auto;
   transition: width 0.28s;
-  background-color: #bfcbd9;
 }
 
 .app-main {
   width: 100%;
   height: 100%;
+  flex: 1;
+  background-color: #30B08F;
 }
 
 </style>
