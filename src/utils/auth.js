@@ -1,7 +1,8 @@
 export function setToken(val) {
     console.info(val)
+    window.localStorage.setItem("token", val)
 }
 
 export function getToken() {
-    return "123"
+    return window.localStorage.getItem("token")
 }

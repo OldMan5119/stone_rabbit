@@ -1,13 +1,21 @@
 import router from "@/router/index";
-import {getToken, setToken} from "@/utils/auth";
+import {getToken} from "@/utils/auth";
 
 
 router.beforeEach((to, from, next) => {
-    console.log("beforeEach : ", to.path, " , ", from.path)
-    setToken("234")
-    console.log("getToken() : ", getToken())
-    next()
-})
-router.afterEach((to, from) => {
-    console.log("afterEach : ", to.path, " , ", from.path)
+    console.log("beforeEach : to - ", to.path, " , from - ", from.path + " , noNeedAuth = " + to.meta.noNeedAuth)
+    if (to.meta.noNeedAuth) {
+        next()
+        return
+    }
+    const token = getToken()
+    if (token === 'valid_token') {
+        next()
+    } else {
+        if (to.path !== '/login') {
+            next("/login")
+        } else {
+            next()
+        }
+    }
 })
