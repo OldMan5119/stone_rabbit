@@ -18,7 +18,8 @@
 </template>
 
 <script>
-import {setToken} from '@/utils/auth'
+// import {setToken} from '@/utils/auth'
+import {login} from '@/api/userinfo.js'
 
 export default {
   data() {
@@ -32,7 +33,8 @@ export default {
       // 实际项目中这里应该调用登录接口
       if (this.username && this.password) {
         // 登录成功后设置token
-        setToken('valid_token')
+        // setToken('valid_token')
+        login('valid_token')
         // 跳转到首页
         this.$router.push('/dashboard')
       } else {
