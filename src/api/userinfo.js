@@ -5,7 +5,5 @@ export function login(data) {
         url: "/rabbit/login",
         method: "POST",
         data: data
-    }).then((resp) => {
-        console.log(resp)
     })
 }
