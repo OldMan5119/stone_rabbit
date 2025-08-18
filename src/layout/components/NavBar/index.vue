@@ -1,7 +1,7 @@
 <template>
   <div class="navi-bar">
     <div class="icon-container">
-      <i class="el-icon-s-fold"></i>
+      <HamburgerIcon :isActive="isActive"/>
       <div class="arrow-container">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
@@ -19,12 +19,20 @@
 
 <script>
 // import {} from "@/store";
+import HamburgerIcon from "@/layout/components/NavBar/HamburgerIcon.vue";
+
 export default {
   name: "NavbarView",
+  components: {HamburgerIcon},
   data() {
     return {
-      slider_fold: true,
+
       // login_msg : this.$store.app.
+    }
+  },
+  computed: {
+    isActive(){
+      return this.$store.state.app.sidebar.isActive;
     }
   }
 }
