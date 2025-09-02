@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="setting-container">
-      <span @click="login()">退出</span>
+      <button :class="isLogin?'logout-btn':'login-btn'" @click="onLoginOut()">
+        {{ isLogin ? "退出" : "登陆" }}
+      </button>
     </div>
   </div>
 </template>
@@ -25,21 +27,31 @@ export default {
   name: "NavbarView",
   components: {HamburgerIcon},
   data() {
-    return {
-
-      // login_msg : this.$store.app.
+    return {}
+  },
+  methods: {
+    onLoginOut() {
+      if (this.isLogin) {
+        //执行退出登陆
+        this.$store.dispatch("user/logout")
+      } else {
+        //执行登陆
+        this.$router.push("/login")
+      }
     }
   },
   computed: {
-    isActive(){
+    isActive() {
       return this.$store.state.app.sidebar.isActive;
+    },
+    isLogin() {
+      return this.$store.state.user.token !== ''
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
 .navi-bar {
   display: flex;
   align-items: center;
@@ -61,5 +73,24 @@ export default {
   .setting-container {
     margin-right: 20px;
   }
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
 }
 </style>

@@ -31,6 +31,11 @@ const actions = {
                 reject(err)
             })
         })
+    },
+    logout({commit}) {
+        return new Promise(() => {
+            commit("REMOVE_TOKEN");
+        })
     }
 }
 const getters = {}
