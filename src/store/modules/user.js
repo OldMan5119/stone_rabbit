@@ -2,7 +2,11 @@ import {getToken, removeToken, setToken} from "@/utils/auth";
 import {login} from "@/api/userinfo";
 
 const state = {
-    token: getToken()
+    token: getToken(),
+    name: '',
+    avatar: '',
+    introduction: '',
+    roles: []
 }
 const mutations = {
     SET_TOKEN(state, token) {
