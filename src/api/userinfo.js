@@ -7,3 +7,10 @@ export function login(data) {
         data: data
     })
 }
+
+export function getUserinfo() {
+    return request({
+        url: "/rabbit/getUserInfo",
+        method: "GET",
+    })
+}
