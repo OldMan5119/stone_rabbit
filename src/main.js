@@ -4,7 +4,7 @@ import router from "@/router"
 import "@/third/element"
 import "@/styles/index.scss"
 import store from "./store";
-import "@/router/permission"
+import "@/router/guard"
 
 Vue.config.productionTip = false
 

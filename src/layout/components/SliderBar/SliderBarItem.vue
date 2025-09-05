@@ -1,9 +1,9 @@
 <template>
   <div>
-    <el-submenu :index="item.key">
+    <el-submenu :index="item.path">
       <template #title>
         <i class="el-icon-location"></i>
-        <span>导航一</span>
+        <span>{{item.name}}</span>
       </template>
 
       <el-menu-item index="1-1">选项1</el-menu-item>
@@ -19,14 +19,6 @@ export default {
       type: Object,
       required: true
     },
-    isNest: {
-      type: Boolean,
-      default: false
-    },
-    basePath: {
-      type: String,
-      default: ''
-    }
   },
   data() {
     return {

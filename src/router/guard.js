@@ -11,8 +11,11 @@ router.beforeEach(async (to, from, next) => {
     }
     const token = getToken()
     if (token) {
-        const result = await store.dispatch("user/getUserInfo")
-        console.log(result)
+        const roles = await store.dispatch("user/getUserInfo")
+        console.log("路由守卫@1：", roles)
+        const accessedRoutes = await store.dispatch("permission/generateRoutes", roles)
+        router.addRoutes(accessedRoutes)
+        console.log("路由守卫@2：", accessedRoutes)
         next()
     } else {
         if (to.path !== '/login') {

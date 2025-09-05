@@ -2,8 +2,8 @@ module.exports = {
     transpileDependencies: true,
     devServer: {
         proxy: {
-            '^/rabbit': {
-                target: 'http://192.168.3.3:3000',
+            '/rabbit': {
+                target: 'https://localhost:3443/',
                 changeOrigin: true,
                 // pathRewrite: {'^/rabbit': ''},
                 secure: false, // 忽略 HTTPS 证书错误（仅开发环境）
