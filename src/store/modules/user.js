@@ -50,12 +50,20 @@ const actions = {
         })
     },
 
-    getUserInfo() {
+    getUserInfo({commit}) {
         return new Promise((resolve, reject) => {
             getUserinfo().then(res => {
-                const {ret, data} = res.data;
-                console.log("store/userInfo", ret, " : ", data);
-                resolve(data)
+                const {ret, msg, data} = res.data;
+                if (ret === 0) {
+                    const {avatar, roles, username} = data
+                    commit("SET_AVATAR", avatar)
+                    commit("SET_NAME", username)
+                    commit("SET_ROLES", roles)
+                    resolve(roles)
+                } else {
+                    reject(msg)
+                }
+
             }).catch(err => {
                 reject(err)
             })
