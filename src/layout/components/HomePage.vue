@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" :class="classObj">
     <sidebar class="sidebar-container"/>
 
     <div class="main-container">
@@ -26,7 +26,19 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {},
+  computed: {
+    classObj() {
+      console.info("@@@@",this.$store.state["app/sidebar"])
+      return {
+        hideSidebar: this.$store.state.app.sidebar.opened,
+        openSidebar: false,
+        withoutAnimation: true
+      }
+    }
   }
+
 }
 </script>
 
@@ -65,7 +77,7 @@ export default {
   width: 100%;
   height: 100%;
   flex: 1;
-  background-color: #30B08F;
+  background-color: darkgrey;
 }
 
 </style>

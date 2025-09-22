@@ -1,9 +1,8 @@
 <template>
   <div>
-<!--    <span>开始的{{routes}}</span>-->
     <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-             :collapse="isCollapse">
-      <SliderBarItem v-for="route in routes" :key="route.path" :item="route"/>
+             :collapse="isCollapse" :router="true">
+      <SliderBarItem v-for="route in filterHideRoute(routes)" :key="route.path" :item="route" :collapse="isCollapse"/>
     </el-menu>
   </div>
 </template>
@@ -17,16 +16,25 @@ export default {
   components: {SliderBarItem},
   data() {
     return {
-      isCollapse: false,
       routes: store.state.permission.routes
     };
   },
   methods: {
+    filterHideRoute(routes) {
+      return routes.filter((route) => {
+        return !route.hidden
+      })
+    },
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    }
+  },
+  computed: {
+    isCollapse() {
+      return this.$store.state.app.sidebar.opened
     }
   }
 }

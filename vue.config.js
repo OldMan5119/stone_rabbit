@@ -2,7 +2,7 @@ module.exports = {
     transpileDependencies: true,
     devServer: {
         proxy: {
-            '/rabbit': {
+            '/api': {
                 target: 'https://localhost:3443/',
                 changeOrigin: true,
                 // pathRewrite: {'^/rabbit': ''},

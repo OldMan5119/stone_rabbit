@@ -4,10 +4,11 @@ export const constantRoutes = [
     {
         path: "/",
         component: HomePage,
-        name: "home",
-        redirect: "/dashboard",
+        name: "Home",
+        redirect: "/guide",
         children: [
             {
+                name: "dashboard",
                 path: "dashboard",
                 component: () => import("@/views/dashboard/index")
             }
@@ -15,18 +16,19 @@ export const constantRoutes = [
     }, {
         path: "/guide",
         component: HomePage,
-        name: "guide",
+        name: "Guide",
         redirect: '/guide/index',
         children: [{
             path: 'index',
-            component: () => import('@/views/guide/index'),
+            component: () => import('@/views/stk/SqlQuery'),
             name: 'Guide',
             meta: {title: 'Guide', icon: 'guide', noCache: true}
         }]
     }, {
         path: "/login",
-        name: "login",
+        name: "Login",
         component: () => import("@/views/login/LoginPage"),
+        hidden: true,
         meta: {
             noNeedAuth: true
         }
@@ -36,7 +38,7 @@ export const constantRoutes = [
 export const asyncRoutes = [
     {
         path: '/icon',
-        name: "icon",
+        name: "Icon",
         component: HomePage,
         children: [
             {

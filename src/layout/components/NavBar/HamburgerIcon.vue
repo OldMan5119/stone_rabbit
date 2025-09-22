@@ -6,7 +6,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div @click="$emit('click')">
     <svg
         :class="{'is-active':isActive}"
         class="hamburger"

@@ -1,7 +1,7 @@
 <template>
   <div class="navi-bar">
     <div class="icon-container">
-      <HamburgerIcon :isActive="isActive"/>
+      <HamburgerIcon :isActive="isActive" @click="toggleSideBar"/>
       <div class="arrow-container">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
@@ -38,6 +38,10 @@ export default {
         //执行登陆
         this.$router.push("/login")
       }
+    },
+    toggleSideBar() {
+      console.info("------------")
+      this.$store.dispatch("app/toggleSideBar")
     }
   },
   computed: {
